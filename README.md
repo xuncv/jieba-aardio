@@ -5,7 +5,21 @@ jieba分词的aardio调用
 
 ### 使用方法：
 
-将jieba文件夹复制到aardio标准库目录中，发布时dll会打包进exe中内存加载。
+~~将jieba文件夹复制到aardio标准库目录中，发布时dll会打包进exe中内存加载。~~
+
+在aardio引用远程扩展库示例：
+
+```
+_IMPORTURL["jieba"] = "https://github.com/xuncv/jieba-aardio/releases/download/lastest/jieba.tar.lzma"
+import jieba
+```
+
+也可以在aardio中单独运行以下代码安装扩展库：
+
+```
+import ide
+ide.installLib("jieba","https://github.com/xuncv/jieba-aardio/releases/download/lastest/jieba.tar.lzma")
+```
 
 
 
