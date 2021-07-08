@@ -29,7 +29,7 @@ class jieba{
 			var wordStruct = ..raw.convert(cJiebaWordP,cJiebaWordWithTag,..raw.sizeof(cJiebaWordWithTag)*offset)
 			offset++
 			if(wordStruct.len){
-				return ..raw.tostring( wordStruct.word,1,wordStruct.len),wordStruct.tag; 
+				return ..raw.tostring( wordStruct.word,1,wordStruct.len),..string.str(wordStruct.tag); 
 			}else {
 				dll.FreeWordTag(cJiebaWordP)
 			}
