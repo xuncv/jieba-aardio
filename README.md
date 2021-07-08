@@ -5,12 +5,10 @@ jieba分词的aardio调用
 
 ### 使用方法：
 
-~~将jieba文件夹复制到aardio标准库目录中，发布时dll会打包进exe中内存加载。~~
-
 在aardio引用远程扩展库示例：
 
 ```
-_IMPORTURL["jieba"] = "https://github.com/xuncv/jieba-aardio/releases/download/lastest/jieba.tar.lzma"
+_IMPORTURL["jieba"] = "https://github.com/xuncv/jieba-aardio/releases/download/v0.1/jieba.tar.lzma"
 import jieba
 ```
 
@@ -18,7 +16,7 @@ import jieba
 
 ```
 import ide
-ide.installLib("jieba","https://github.com/xuncv/jieba-aardio/releases/download/lastest/jieba.tar.lzma")
+ide.installLib("jieba","https://github.com/xuncv/jieba-aardio/releases/download/v0.1/jieba.tar.lzma")
 ```
 
 
@@ -46,16 +44,18 @@ var str = /*
 */
 var tk = time.tick()
 //带词性分割
+result = {}
 for word,tag in seg.eachWithTag(str){
-    console.log(word,tag)
+    //console.log(word,tag)
+    table.push(result,{word,tag})
 }
 console.log( string.format("cost time:%d ms", time.tick()-tk) )
 console.pause(true);
-
 
 ```
 
 ### dll编译方法：
 
 1. 安装MinGw
-2. g++ jieba.cpp -fPIC -I ../deps/   -std=c++11 -shared -o jieba.dll -O
+2. g++ jieba.cpp -fPIC -I ../deps/ -std=c++11 -shared  -static-libgcc -static-libstdc++ -Os -o jieba.dll
+
